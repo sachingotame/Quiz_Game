@@ -54,14 +54,14 @@ class UserBoughtCategory(models.Model):
         return f"{self.user.username} - {self.category.category_name}"
 
 class Leaderboard(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     points = models.IntegerField(default=0)
     daily_points = models.IntegerField(default=0)
     weekly_points = models.IntegerField(default=0)
     monthly_points = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.user.username
+        return self.user_id.username
     
     class Meta:
         ordering = ['-date_played']

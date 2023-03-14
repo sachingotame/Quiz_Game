@@ -7,8 +7,8 @@ from .serializers import *
 
 class CategoryView(APIView):
     def get(self, request, slug):
-        category = get_object_or_404(Category, slug=slug)
-        serializer = CategorySerializer(category)
+        category = Category.objects.all()
+        serializer = CategorySerializer(category,many=True)
         return Response(serializer.data)
     
     def post(self, request):
